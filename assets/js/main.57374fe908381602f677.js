@@ -1,7 +1,4 @@
-(() => {
-  "use strict";
-
-  class t {
+class t {
     constructor(t, e = !1, n = ".chart-spending") {
       this.data = t, this.container = document.querySelector(n), this.isMaxSpending = e, this._createMarkup()
     }
@@ -11,15 +8,20 @@
       this.container.insertAdjacentHTML("beforeend", `
         <div style="height: ${t}%;" class="chart-spending__item">
           <div class="tooltip">$${t}</div>
-          <div style="background: ${this.isMaxSpending && "#76B5BCFF"}"></div>
+          <div style="background: ${this.isMaxSpending ? "#76B5BCFF" : 'transparent'}"></div>
           <p>${e}</p>
         </div>
     `)
     }
   }
 
+  async function getChartSpending(url = "./assets/data.json") {
+    const response = await fetch(url)
+    return response.json()
+  }
+
   document.addEventListener("DOMContentLoaded", (() => {
-    (async (url = "./assets/data.json") => (await fetch(url)).json())()
+    getChartSpending()
       .then((e) => {
       const date = new Date().getDay(), day = 0 === date ? 6 : 6 === date ? 5 : date;
 
@@ -35,4 +37,3 @@
       }))))
     })
   }))
-})();
