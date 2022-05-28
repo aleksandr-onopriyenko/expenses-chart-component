@@ -4,7 +4,10 @@
 #####################################################
 *.sketch
 *.fig
-
+webpack.config.js
+src
+yarn.lock
+packege.json
 # Avoid accidental XD upload if you convert the design file
 ###############################################
 ## Please do not remove line 12 - thanks! 🙂 ##
@@ -21,4 +24,3 @@ README-template.md
 node_modules
 README.md
 style-guide.md
-webpack.config.js
