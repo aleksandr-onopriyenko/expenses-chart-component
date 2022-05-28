@@ -19,17 +19,20 @@
   }
 
   document.addEventListener("DOMContentLoaded", (() => {
-    (async (t = "./assets/data.json") => (await fetch(t)).json())().then((e => {
-      const n = (new Date).getDay(), s = 0 === n ? 6 : 6 === n ? 5 : n;
-      e.forEach(((e, n) => {
-        n === s ? new t(e, !0) : new t(e)
-      }));
+    (async (url = "./assets/data.json") => (await fetch(url)).json())()
+      .then((e) => {
+      const date = new Date().getDay(), day = 0 === date ? 6 : 6 === date ? 5 : date;
+
+      e.forEach((el, n) => {
+        n === day ? new t(el, !0) : new t(el)
+      });
+
       const a = document.querySelectorAll(".chart-spending__item");
       a.forEach((t => t.addEventListener("mouseover", (() => {
         t.querySelector(".tooltip").classList.add("active")
       })))), a.forEach((t => t.addEventListener("mouseout", (() => {
         t.querySelector(".tooltip").classList.remove("active")
       }))))
-    }))
+    })
   }))
 })();
