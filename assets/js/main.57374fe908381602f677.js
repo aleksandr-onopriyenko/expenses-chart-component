@@ -8,7 +8,7 @@ class t {
       this.container.insertAdjacentHTML("beforeend", `
         <div style="height: ${t}%;" class="chart-spending__item">
           <div class="tooltip">$${t}</div>
-          <div style="background: ${this.isMaxSpending ? "#76B5BCFF" : 'transparent'}"></div>
+          <div style="background: ${this.isMaxSpending ? "#76B5BCFF" : ''}"></div>
           <p>${e}</p>
         </div>
     `)
