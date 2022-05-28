@@ -8,12 +8,18 @@
 
     _createMarkup() {
       const {amount: t, day: e} = this.data;
-      this.container.insertAdjacentHTML("beforeend", `\n        <div style="height: ${t}%;" class="chart-spending__item">\n          <div class="tooltip">$${t}</div>\n          <div style="background: ${this.isMaxSpending && "#76B5BCFF"}"></div>\n          <p>${e}</p>\n        </div>\n    `)
+      this.container.insertAdjacentHTML("beforeend", `
+        <div style="height: ${t}%;" class="chart-spending__item">
+          <div class="tooltip">$${t}</div>
+          <div style="background: ${this.isMaxSpending && "#76B5BCFF"}"></div>
+          <p>${e}</p>
+        </div>
+    `)
     }
   }
 
   document.addEventListener("DOMContentLoaded", (() => {
-    (async (t = "../data.json") => (await fetch(t)).json())().then((e => {
+    (async (t = "./assets/data.json") => (await fetch(t)).json())().then((e => {
       const n = (new Date).getDay(), s = 0 === n ? 6 : 6 === n ? 5 : n;
       e.forEach(((e, n) => {
         n === s ? new t(e, !0) : new t(e)
